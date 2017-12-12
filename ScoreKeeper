@@ -1,0 +1,37 @@
+
+public class ScoreKeeper {
+
+	private int gametotal;  //Field Declarations for game total and round total
+	private int roundtotal;
+	
+	public ScoreKeeper() { //Scorekeeper method
+		gametotal = roundtotal = 0;
+	}
+	
+	public void addToGameTotal() { //Mutator: Adds to total score
+		gametotal += roundtotal;
+		resetRoundTotal();
+	}
+	
+	public void addToRoundTotal(int value) { //the Mutator adds to Round total
+		roundtotal += value;
+	}
+
+	public void resetGameTotal() { // the Mutator resets Round
+		gametotal = 0;
+		resetRoundTotal();
+	}
+
+	public void resetRoundTotal() {//Mutator: Resets round
+		roundtotal = 0;
+	}
+
+	public int getRoundTotal() { //Accessor: Round total
+		return roundtotal;
+	}
+
+	public int getGameTotal() { //Accessor: Game total
+		return gametotal;
+	}
+	
+}
