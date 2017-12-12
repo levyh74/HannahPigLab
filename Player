@@ -1,0 +1,56 @@
+// notice that the "abstract" keyword invokes usage of its methods to be overridden 
+
+public abstract class Player { 
+	
+	protected PairOfDice pod; //Field declarations for Pair of Dice, String and Score
+	protected String name;
+	protected ScoreKeeper sk;
+	
+	public Player(String name, PairOfDice pod) { //Default Constructor
+		this.name = name;
+		this.pod = pod;
+		sk = new ScoreKeeper();
+	}
+	
+	public abstract boolean rollAgain(); //Roll again method
+	
+	public boolean rollDice() { //Can the player roll?
+		pod.roll();
+		System.out.println(pod);
+		if(pod.hasOneOne() == false) { //If there are no 1' you may roll
+			sk.addToRoundTotal(pod.totalValue());
+			if(sk.getRoundTotal() + sk.getGameTotal() >= 100) {
+				return false;
+			}
+		} else if(pod.hasTwoOnes() == true) { //Notifies of end turn
+			System.out.println("You rolled two ones.");
+			sk.resetGameTotal();
+			return false;
+		} else { //Notfies you rolled a one
+			System.out.println("You rolled a one.");
+			sk.resetRoundTotal();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isWinner() { //You win with 100 pts
+		if(sk.getGameTotal() >= 100) {
+			return true;
+		}
+		return false;
+	}
+
+	public String getName() { //Accessor of name
+		return name;
+	}
+	
+	public void endRound() {  //Ends Round method called
+		sk.addToGameTotal();
+	}
+	
+	public int getGameTotal() {
+		return sk.getGameTotal();
+	}
+	
+}
