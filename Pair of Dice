@@ -1,0 +1,46 @@
+public class PairOfDice { 
+	Die d1; //Field Declarations for Dice
+	Die d2;
+	
+	public PairOfDice() { //Default constructor
+		d1 = new Die();
+		d2 = new Die();
+	}
+	
+	public void roll() { //Creates new dice objects
+		d1.roll();
+		d2.roll();
+	}
+	
+	public boolean hasTwoOnes() { //Checks if 1
+		if(d1.getValue() == 1 && d2.getValue() == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean hasOneOne() { //Checks if 1 1
+		if(d1.getValue() == 1 || d2.getValue() == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int totalValue() { //Accesses acsessor method in other class
+		return (d1.getValue() + d2.getValue());
+	}
+	
+	public String toString() { //Converts roll into String
+		String d1string = d1.toString();
+		String d2string = d2.toString();
+		return d1string + "\n" + d2string;
+	}
+	
+	
+	public static void main(String[] args) { //Creates Roll
+		PairOfDice pod = new PairOfDice();
+		pod.roll();
+		System.out.println(pod);
+	}
+	
+}
