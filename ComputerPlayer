@@ -1,0 +1,18 @@
+
+
+
+public class ComputerPlayer extends Player { //inheritance of Player class
+ 
+	public ComputerPlayer(String name, PairOfDice pod) { //Contrstructor
+		super(name, pod);
+	}
+	
+	@Override
+	public boolean rollAgain() { //If the Computer has more than 20 points it will fold
+		if(sk.getRoundTotal() < 20) {
+			return true;
+		}
+		return false;
+	}
+
+}
